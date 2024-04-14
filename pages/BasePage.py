@@ -1,6 +1,7 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
+from pages.locators import base_locators as base_loc
 
 
 class BasePage:
@@ -23,3 +24,7 @@ class BasePage:
 
     def find_all(self, locator: tuple):
         return self.driver.find_elements(*locator)
+
+    def check_that_current_page_is_open(self, text):
+        current_product_page_header_title = self.find(base_loc.page_header_title_locator).text
+        assert text == current_product_page_header_title, 'Wrong page is open'
