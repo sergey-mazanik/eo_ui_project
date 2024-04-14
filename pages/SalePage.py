@@ -1,15 +1,9 @@
 from pages.BasePage import BasePage
-from selenium.webdriver.support import expected_conditions as ec
 from pages.locators import sale_locators as sale_loc
 
 
 class SalePage(BasePage):
     page_url = '/sale.html'
-
-    def check_that_adv_is_on_page(self):
-        self.wait.until(ec.presence_of_element_located(sale_loc.iframe))
-        self.driver.switch_to.frame(self.find(sale_loc.iframe))
-        self.wait.until(ec.visibility_of(self.find(sale_loc.adv_locator)))
 
     def check_that_promo_button_is_clickable(self):
         promo_button = self.find(sale_loc.shop_deals_button_locator)
