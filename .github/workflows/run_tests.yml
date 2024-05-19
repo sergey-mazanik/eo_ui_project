@@ -55,7 +55,7 @@ jobs:
       - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
       - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
       - name: Save allure results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results
           path: allure-results
@@ -91,7 +91,7 @@ jobs:
         run: pytest -m regression --alluredir=allure-results
         continue-on-error: true
       - name: Save allure results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results
           path: allure-results
@@ -114,7 +114,7 @@ jobs:
       - name: Generate report
         run: allure generate -c allure-results -o _site
       - name: Save allure report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: _site
           path: _site
