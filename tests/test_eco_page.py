@@ -1,8 +1,13 @@
+import pytest
+
+
+@pytest.mark.smoke
 def test_header_title_is_correct(eco_page):
     eco_page.open_page()
     eco_page.check_that_current_page_is_open('Eco Friendly')
 
 
+@pytest.mark.regression
 def test_compare_product(eco_page):
     eco_page.open_page()
     eco_page.move_to_product()
@@ -10,6 +15,7 @@ def test_compare_product(eco_page):
     eco_page.check_that_product_added_to_compare()
 
 
+@pytest.mark.regression
 def test_add_product_to_cart_without_properties(eco_page):
     eco_page.open_page()
     eco_page.move_to_product()
@@ -18,6 +24,7 @@ def test_add_product_to_cart_without_properties(eco_page):
     eco_page.check_that_right_product_page_is_open()
 
 
+@pytest.mark.regression
 def test_add_product_to_cart(eco_page):
     eco_page.open_page()
     eco_page.choose_product_size()
